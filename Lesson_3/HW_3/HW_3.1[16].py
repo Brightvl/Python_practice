@@ -22,6 +22,8 @@ else:
 # *усложнение
 # print(f"Кол-во повторений = {count}" if count != 0 else -1)
 
+
+# По шарповски решение 
 # if count == 0:
 #     count = -1
 # print(count)

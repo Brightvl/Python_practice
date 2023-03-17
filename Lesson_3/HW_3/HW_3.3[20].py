@@ -47,7 +47,7 @@ csrable_piont_table = {
                        10: "QZФЩЪ",
                        }
 
-word = "dfg"
+word = input("Введите слово: ")
 sum_letter = 0
 
 # Мы берем букву из слова word
@@ -60,4 +60,4 @@ for char in word:
             break
 print(sum_letter)
 
-        # print(f"{type(point)} {point}, {type(chars)} {chars}")
+# print(f"{type(point)} {point}, {type(chars)} {chars}")
