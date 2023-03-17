@@ -36,6 +36,22 @@ def nearest_number(lst, find_number):
 number_list = [10, 5, 7, 3, 3, 2, 5, 7, 3, 8]
 nearest_number(number_list, 6)
 
+# Клевый код от Бори (лучше моего)
+# numbers = [10, 5, 7, 3, 3, 2, 5, 7, 3, 8]
+# input_number = 3
+
+# closest_numbers = [numbers[0]]
+# difference = abs(input_number - closest_numbers[0])
+
+# for number in numbers:
+#     new_difference = abs(input_number - number)
+#     if new_difference < difference:
+#         closest_numbers = [number]
+#         difference = abs(input_number - number)
+#     elif new_difference == difference:
+#         closest_numbers.append(number)
+
+# print(set(closest_numbers))
 
 # изначальное решение
 # list_num.sort()
