@@ -29,6 +29,7 @@ count_bush = len(num_berries)
 
 sum_berries = []
 
+# Поставил условия на начало и конец циклв, чтобы из него невыпасть и посчитать значения
 for idx in range(count_bush):
     if idx == 0:
         sum_berries.append(sum(num_berries[:idx+2]) + num_berries[-1])

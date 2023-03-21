@@ -17,21 +17,18 @@
 # Input2: 3 9 12 15 18
 # Output: Повторяющихся чисел нет
 
-#фигурные вместо set
-list_1 = [2, 4, 6, 8, 10, 10, 8, 6, 4, 2]
-list_2 = [3, 9, 12, 15, 18]
 
-new_set_1 = set(list_1)
-new_set_2 = set(list_2)
+new_set_1 = {2, 4, 6, 8, 10, 10, 8, 6, 4, 2}
+new_set_2 = {3, 9, 12, 15, 18, 2, 8}
 
-new_set_3 = new_set_2.intersection(new_set_1)
+new_set_3 = new_set_1.intersection(new_set_2)
+
+print(*new_set_3 if len(new_set_3) != 0 else ["Повторяющихся чисел нет"])
 
 # if len(new_set_3) != 0:
 #     print(*new_set_3)
 # else:
 #     print("Повторяющихся чисел нет")
-
-print(*new_set_3 if len(new_set_3) != 0 else ["Повторяющихся чисел нет"])
 
 # * - Это распаковка
 # a,b = new_set_2.intersection(new_set_1)
