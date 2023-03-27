@@ -13,7 +13,8 @@ def recursion(num_a: int, num_b: int) -> int:
     if not (isinstance(num_a, int) and isinstance(num_b, int)):
         return None
     if num_b == 0: return num_a
-    return recursion(num_a, num_b-1) + 1
+    return recursion(num_a, num_b - 1) + 1
+
 
 print(recursion(5, 10))
 print(recursion(4, "et"))

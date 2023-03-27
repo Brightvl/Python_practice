@@ -11,5 +11,7 @@
 def recursion(num, degree):
     if degree == 0:
         return 1
-    return recursion(num,degree-1) * num 
-print(recursion(3,0))
+    return recursion(num, degree - 1) * num
+
+
+print(recursion(3, 0))
