@@ -6,3 +6,14 @@
 # Примеры/Тесты:
 # <function_name>([1, 2, 3, 2, 3]) -> 2
 # <function_name>([1, 2, 3, 2, 3, 3, 2, 4]) -> 6
+
+def find_pairs(list):
+    new_set = set(list)
+    num = 0
+    print(new_set)
+    for el in new_set:
+        x = list.count(el)
+        num += x*(x-1)//2
+    return num
+
+print(find_pairs([1, 2, 3, 2, 3, 3, 2, 4,2,2]))
