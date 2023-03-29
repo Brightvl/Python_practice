@@ -31,6 +31,10 @@ def find_in_list(list_, start, end):
     return [(n, list_[n]) for n in range(len(list_)) if start <= list_[n] <= end]
 
 
+def find_in_list1(list_, start, end):
+    return [(idx, el) for idx, el in enumerate(list_) if start <= el <= end]
+
+
 lst1 = [randint(-20, 20) for el in range(20)]
 
 start_el, end_el = map(int, input(f"Принятый список:\n"
@@ -39,4 +43,5 @@ start_el, end_el = map(int, input(f"Принятый список:\n"
                                   f"<от> <до>\n").split())
 
 print(f"Индексы чисел в диапазоне: \n{find_index_range(lst1, start_el, end_el)}\n"
-      f"Список картежей [(индекс,элемент)]:\n{find_in_list(lst1, start_el, end_el)}")
+      f"Список картежей [(индекс,элемент)]:\n{find_in_list(lst1, start_el, end_el)}\n"
+      f"{find_in_list1(lst1, start_el, end_el)}")
