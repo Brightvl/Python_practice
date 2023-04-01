@@ -15,6 +15,7 @@
 
 # [*] Усложнение. Не используйте цикл в функции
 
+
 def same_by(func, objects):
     if len(objects) == 0: return None
     for idx in range(1, len(objects)):

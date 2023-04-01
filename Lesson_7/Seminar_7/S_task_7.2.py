@@ -10,10 +10,10 @@
 
 from os.path import join
 
-datapath = join(".", "data")
-filename = join(datapath, 'data.txt')
+data_path = join(".", "data")
+filename = join(data_path, 'data.txt')
 
-with open(join(datapath, "data.txt"), mode="r", encoding="utf-8") as data_file:
+with open(join(data_path, "data.txt"), mode="r", encoding="utf-8") as data_file:
     data = [line.strip().split("#") for line in data_file]
 
 # new_data2 = [f"{fio[0]} {fio[1][0]}.{fio[2][0]}." for fio in data]
@@ -21,6 +21,6 @@ new_data2 = [f"{surname} {name[0]}.{parent[0]}." for surname, name, parent in da
 
 print(*new_data2, sep="\n")
 
-# Полученные строки записать в новый файл. Файл должен находиться в поддиретории rezults.
-with open(join(datapath, "result", "new_task_7.2_data.csv"), mode="w", encoding="utf-8") as data_file:
+# Полученные строки записать в новый файл. Файл должен находиться в поддиректории results.
+with open(join(data_path, "result", "new_task_7.2_data.csv"), mode="w", encoding="utf-8") as data_file:
     [data_file.write(el + "\n") for el in new_data2]
