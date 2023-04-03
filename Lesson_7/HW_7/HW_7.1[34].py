@@ -31,48 +31,49 @@
 # (False, [{'а': 11}, {'у': 6, 'а': 3}])
 # <function_name>("Пам-парам-пурум Пум-пурум-карам") -> (True, [{'а': 3, 'у': 2}, {'у': 3, 'а': 2}])
 
-from time import perf_counter  # упрощённые счётчики производительности функции
-from random import randint
+def define_rhythm(string: str):
+    def_list = string.split()
+    alphabet = "аиеёоуыэюя"
+    idx = sum(1 for el in def_list[0] if el in alphabet)
+    for phrase in def_list[1:]:
+        idy = sum(1 for symbol in phrase if symbol in alphabet)
+        if idx != idy:
+            return False
+    return True
 
 
+print("\n", define_rhythm("пара-ра-рам рам-пам-папам па-ра-па-дам"), "\n",
+      define_rhythm("пара-ра-рам рам-пум-пупам па-ре-по-дам"), "\n",
+      define_rhythm("пара-ра-рам рам-пуум-пупам па-ре-по-дам"), "\n",
+      define_rhythm("Трам-пара-папам-парам-па-пам-пам-па Пум-пурум-пу-пурум-трам-пам-па"), "\n",
+      define_rhythm("Пам-парам-пурум Пум-пурум-карам"))
 
-def define_rhythm(string: str, flag = False):
-    def_list = string.split() # переводим в список разбивая строку
 
-    alphabet = "аиеёоуыэюя"     # строка с буквами алфавита
-    idx = sum(1 for el in def_list[0] if el in alphabet)    #Записываем количество слогов 1-й фразы списка
-    list_dict_symbol = []   # Пустой список для словарей (в словарях будет записано слоги и их число в фразах)
-    for phrase in def_list:     #Пребираем основной список
-        new_dict = {}       #Создаем словарь для одной фразы
-        for symbol in phrase:   #перебираем символы в фразе
-            if symbol in alphabet:  # Если символ есть содержится в алфавите
+# Усложнение
+def define_rhythm_hard(string: str, flag=True):
+    def_list = string.split()  # переводим в список разбивая строку
+    alphabet = "аиеёоуыэюя"  # строка с буквами алфавита
+    first_phrase = sum(1 for el in def_list[0] if el in alphabet)  # Записываем количество слогов 1-й фразы списка
+    list_dict_symbol = []  # Пустой список для словарей (в словарях будет записано слоги и их число во фразах)
+    for phrase in def_list:  # Перебираем основной список
+        new_dict = {}  # Создаем словарь для одной фразы
+        for symbol in phrase:  # перебираем символы во фразе
+            if symbol in alphabet:  # Если символ содержится в алфавите
                 if symbol in new_dict:  # Есть ли символ в словаре
-                    new_dict[symbol] += 1   #Увеличь его значение на 1
+                    new_dict[symbol] += 1  # Увеличь его значение на 1
                 else:
-                    new_dict[symbol] = 1    # иначе добавь/создай его в словаре со значением 1
-        list_dict_symbol.append(new_dict)   # Добавь полученый словарь в список символов
-        idy = sum([val for phrase1 in list_dict_symbol for val in phrase1.values()]) # Определяем общее количество
-        # слогов в фразе
+                    new_dict[symbol] = 1  # иначе добавь/создай его в словаре со значением 1
+        list_dict_symbol.append(new_dict)  # Добавь полученный словарь в список символов
+        idy = sum(new_dict.values())  # Определяем количество слогов во фразе
+        if first_phrase != idy:  # Если количество слогов в 1 фразе не равно остальным
+            return False, list_dict_symbol  # верни False и список словарей
 
-        if idx != idy: # Если еоличество слогов в 1 фразе не равно остальным
-            return False, list_dict_symbol if flag else None    #верни False и список словарей
-    return True, list_dict_symbol if flag else None #верни False и список словарей
-
-print(define_rhythm("пара-ра-рам рам-пум-пупам па-ре-по-дам", True))
+    return (True, list_dict_symbol) if flag else True  # Условие чтобы первая проверка выводилась правильно
 
 
-# def define_rhythm(string: str):
-#     t1 = perf_counter()
-#     def_list = string.split()
-#     alphabet = "аиеёоуыэюя"
-#     idx = sum(1 for el in def_list[0] if el in alphabet)
-#     for phrase in def_list[1:]:
-#         idy = sum(1 for symbol in phrase if symbol in alphabet)
-#         if idx != idy:
-#             t2 = perf_counter()
-#             return False, t2 - t1
-#     t2 = perf_counter()
-#     return True, t2 - t1
-#
-#
-# print(define_rhythm("пара-ра-рам рам-пам-папам па-ра-па-дам"))
+print("\n", define_rhythm_hard("пара-ра-рам рам-пам-папам па-ра-па-дам", False), "\n",
+      define_rhythm_hard("пара-ра-рам рам-пам-папам па-ра-па-дам", True), "\n",
+      define_rhythm_hard("пара-ра-рам рам-пум-пупам па-ре-по-дам"), "\n",
+      define_rhythm_hard("пара-ра-рам рам-пуум-пупам па-ре-по-дам"), "\n",
+      define_rhythm_hard("Трам-пара-папам-парам-па-пам-пам-па Пум-пурум-пу-пурум-трам-пам-па"), "\n",
+      define_rhythm_hard("Пам-парам-пурум Пум-пурум-карам"))
