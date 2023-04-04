@@ -39,3 +39,14 @@
 # 6 |    6  12  18  24  30  36
 
 
+def print_operation_table_hard(operation, num_rows=6, num_columns=6):
+    # номера столбцов
+    print(" " * 3, *(f"{column:>4}" for column in range(1, num_columns + 1)), sep='')
+    # Выводим разделительную строку
+    print(" " * 3, "-" * 4 * num_columns, sep='')
+    # Выводим остальные строки с самого начала чтобы они сошлись с номера столбцов
+    [print(f"{row:<2}|", *(f"{operation(row, column):>4}"
+                           for column in range(1, num_columns + 1)), sep='') for row in range(1, num_rows + 1)]
+
+
+print_operation_table_hard(lambda x, y: x * y, num_rows=6, num_columns=6)

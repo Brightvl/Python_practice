@@ -71,6 +71,18 @@ def define_rhythm_hard(string: str, flag=True):
     return (True, list_dict_symbol) if flag else True  # Условие чтобы первая проверка выводилась правильно
 
 
+# Сокращенный
+def define_rhythm_hard(string: str, flag=True):
+    def_list = string.split()  # переводим в список разбивая строку
+    alphabet = "аиеёоуыэюя"  # строка с буквами алфавита
+    first_phrase = sum(1 for el in def_list[0] if el in alphabet)  # Записываем количество слогов 1-й фразы списка
+    list_dict_symbol = [{symbol: phrase.count(symbol) for symbol in set(phrase) if symbol in alphabet} for phrase in def_list]
+    idy_list = [sum(new_dict.values()) for new_dict in list_dict_symbol]
+    if first_phrase not in idy_list:
+        return False, list_dict_symbol
+    return (True, list_dict_symbol) if flag else True
+
+
 print("\n", define_rhythm_hard("пара-ра-рам рам-пам-папам па-ра-па-дам", False), "\n",
       define_rhythm_hard("пара-ра-рам рам-пам-папам па-ра-па-дам", True), "\n",
       define_rhythm_hard("пара-ра-рам рам-пум-пупам па-ре-по-дам"), "\n",
