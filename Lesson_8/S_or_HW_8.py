@@ -4,7 +4,9 @@ phonebook = [{"surname": "Иванов", "name": "Иван", "phone": "791475647
              {"surname": "Иванько", "name": "Сергей", "phone": "79147564465", "description": "Работник"}]
 
 
-# Чтение телефонного справочника
+# Отображение справочника???
+
+# Чтение телефонного справочника по фильтру
 def read_records(phonebook):
     surname_filter = input("Введите первую часть фамилии для поиска: ").capitalize()
     found_records = []
@@ -21,12 +23,16 @@ def read_records(phonebook):
         print("Записи не найдены.")
 
 
-# # Создание новой записи в справочнике
-# def create_record(phonebook):
-#     name = input("Введите имя: ")
-#     surname = input("Введите фамилию: ")
-#     phone = input("Введите телефон: ")
-#     description = input("Введите описание: ")
-#     phonebook[len(phonebook)+1] = (name, surname, phone, description)
-#
-read_records(phonebook)
+# Создание новой записи в справочнике
+def create_record(phonebook):
+    new_person = {}
+    new_person["Name"] = input("Введите фамилию: ").capitalize()
+    new_person["surname"] = input("Введите имя: ").capitalize()
+    new_person["phone"] = input("Введите телефон: ")
+    new_person["description"] = input("Введите описание: ").capitalize()
+    return phonebook.append(new_person)
+
+
+# read_records(phonebook)
+create_record(phonebook)
+print(phonebook)
