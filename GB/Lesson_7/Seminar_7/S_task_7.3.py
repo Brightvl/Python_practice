@@ -22,7 +22,7 @@ def names_comprehension_two(surname: str, name: str, parent: str) -> str:
 
 "привет"
 
-data_path = join('.', 'data')
+data_path = join('', 'data')
 filename = join(data_path, 'w_07_7.2_data.csv')
 
 with open(filename, mode='r', encoding='utf-8') as file:

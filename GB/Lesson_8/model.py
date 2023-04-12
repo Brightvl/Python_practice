@@ -47,7 +47,6 @@ def delete_records(data_phonebook, surname_filter):
         view_notion("человек не найден")
 
 
-
 # Экспорт файла
 def export_in_file(export_file, data):
     # w - запись
@@ -65,5 +64,3 @@ def read_file(file_path: str) -> list:
             new_list = string.strip().split(",")  # убираем перенос строки и делим по запятой
             data.append({"surname": new_list[0], 'name': new_list[1], 'phone': new_list[2], 'description': new_list[3]})
     return data
-
-

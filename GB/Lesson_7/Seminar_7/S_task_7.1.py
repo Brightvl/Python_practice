@@ -10,7 +10,7 @@
 
 from os.path import join
 
-datapath = join(".", "data")
+datapath = join("", "data")
 filename = join(datapath, 'data.txt')
 
 file = open(join(datapath, 'data.txt'), mode='r', encoding='utf-8')
